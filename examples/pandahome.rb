@@ -14,8 +14,8 @@ s.module :roundedBox, 'size[3]', :radius, :sidesonly do
 	s.if s.sidesonly do
 		s.cube s.size - s[s.radius*2,0,0], true
 		s.cube s.size - s[0,s.radius*2,0], true
-		s.for x: s[s.radius-s.size[0], -s.radius+s.size[0]]/2,
-				y: s[s.radius-s.size[1], -s.radius+s.size[1]]/2 do
+		s.for x: s[s.radius-s.size[0], -s.radius+s.size[0]] / 2,
+				y: s[s.radius-s.size[1], -s.radius+s.size[1]] / 2 do
 			s.translate( s[s.x,s.y,0]) { s.cylinder s: s.radius, h: s.size[2], center: true }
 		end
 	end
@@ -25,8 +25,8 @@ s.module :roundedBox, 'size[3]', :radius, :sidesonly do
 		s.cube s.size-s[s.radius,s.radius,0]*2, center: true
 	end
 	s.for axis: 0..2 do
-		s.for x: s.radius*s[1,-1] + s.size[s.axis]/2*s[-1,1],
-				y: s.radius*s[1,-1] + s.size[(s.axis+1)%3]/2*s[-1,1] do
+		s.for x: s.radius*s[1,-1] + s.size[s.axis] / 2 * s[-1,1],
+				y: s.radius*s[1,-1] + s.size[(s.axis+1)%3] / 2 *s[-1,1] do
 			s.rotate( (s+:rot)[s.axis]) do
 				s.translate s[s.x,s.y,0] do
 					s.cylinder h: s.size[(s.axis+2)%3]-s.radius*2, r: s.radius, center: true
@@ -34,9 +34,9 @@ s.module :roundedBox, 'size[3]', :radius, :sidesonly do
 			end
 		end
 	end
-	s.for x: (s.radius*s[1,-1] + s.size[0]*s[-1,1]) /2,
-			y: (s.radius*s[1,-1] + s.size[1]*s[-1,1]) /2,
-			z: (s.radius*s[1,-1] + s.size[2]*s[-1,1]) /2 do
+	s.for x: (s.radius*s[1,-1] + s.size[0]*s[-1,1]) / 2,
+			y: (s.radius*s[1,-1] + s.size[1]*s[-1,1]) / 2,
+			z: (s.radius*s[1,-1] + s.size[2]*s[-1,1]) / 2 do
 		s.translate(s[s.x,s.y,s.z]) { s.sphere s.radius }
 	end
 end
